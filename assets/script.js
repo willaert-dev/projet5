@@ -19,8 +19,8 @@ const slides = [
 const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 
-arrow_left.addEventListener("click", alert("gauche"));
-arrow_right.addEventListener("click",  alert("droite"));
+arrow_left.addEventListener("click", console.log("gauche"));
+arrow_right.addEventListener("click", bulletRight);
 
 const nb_points = slides.length;
 console.log(nb_points);
@@ -33,4 +33,19 @@ for (let i = 0; i < nb_points; i++) {
     dots.appendChild(point);
     point.classList.add("dot");
 }
+
+tableau_point = document.querySelectorAll(".dot");
+tableau_point[0].classList.add("dot_selected");
+
+function bulletRight() {
+	indice = 0; 
+ for (let index = 0; index < nb_points; index++) {
+	compteur = tableau_point[index].classList;
+ if (compteur.contains("dot_selected")) {
+	indice = index;	
+ }
+
+ tableau_point[indice].classList.remove("dot_selected")
+}	
+ }	
 
