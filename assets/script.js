@@ -53,7 +53,8 @@ function bulletRight() {
   }
 }
 
-function bulletLeft() {
+function bulletLeftRight() {
+	indice = 1;
   for (let index = 0; index < nb_points; index++) {
     nomClass = tableau_point[index].classlist;
     if (nomClass.contains("dot_selected")) {
