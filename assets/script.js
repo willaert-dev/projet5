@@ -17,53 +17,31 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
-const arrow_left = document.querySelector(".arrow_left");
-const arrow_right = document.querySelector(".arrow_right");
 
-arrow_left.addEventListener("click", function () {
-  moveSlider(-1);
-});
-arrow_right.addEventListener("click", function () {
-  moveSlider(1);
-});
-function moveSlider(slideMove) {
-  console.log(slideMove);
-}
-const nb_points = slides.length;
-console.log(nb_points);
-
-let dots = document.querySelector(".dots");
-
-for (let i = 0; i < nb_points; i++) {
-  const point = document.createElement("div");  
-  point.classList.add("dot");
-  dots.appendChild(point);
-}
-
-tableau_point = document.querySelectorAll(".dot");
-tableau_point[0].classList.add("dot_selected");
-
-function bulletRight() {
-  indice = 0;
-  for (let index = 0; index < nb_points; index++) {
-    nomClass = tableau_point[index].classList;
-    if (nomClass.contains("dot_selected")) {
+  arrow_left.addEventListener("click", console.log("gauche"));
+  arrow_right.addEventListener("click", bulletRight);
+  
+  const nb_points = slides.length;
+  console.log(nb_points);
+  let dots = document.querySelector(".dots");
+  for (let i = 0; i < nb_points; i++) {
+      const point = document.createElement("div");
+      dots.appendChild(point);
+      point.classList.add("dot");
+  }
+  
+  tableau_point = document.querySelectorAll(".dot");
+  tableau_point[0].classList.add("dot_selected");
+  
+  function bulletRight() {
+      indice = 0; 
+   for (let index = 0; index < nb_points; index++) {
+      compteur = tableau_point[index].classList;
+   if (compteur.contains("dot_selected")) {
       indice = index;
-    }
+   }
+  
+   tableau_point[indice].classList.remove("dot_selected")
+   tableau_point[indice+1].classList.add("dot_selected")
   }
-}
-
-function bulletLeftRight() {
-	indice = 1;
-  for (let index = 0; index < nb_points; index++) {
-    nomClass = tableau_point[index].classlist;
-    if (nomClass.contains("dot_selected")) {
-      index = index;
-    }
-  }
-}
-function getIndexSlider(){
-	let indexSlider;
-
-	return indexSlider;
-}
+   }
