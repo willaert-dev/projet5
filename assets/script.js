@@ -18,9 +18,20 @@ const slides = [
   },
 ];
 
-  arrow_left.addEventListener("click", console.log("gauche"));
-  arrow_right.addEventListener("click", bulletRight);
-  
+ 
+const arrow_left = document.querySelector(".arrow_left");
+const arrow_right = document.querySelector(".arrow_right");
+
+  arrow_left.addEventListener("click",function() {
+    bulletSlider(-1);
+  }) ;
+  arrow_right.addEventListener("click",function() {
+    bulletSlider(1);
+  }) ;
+  function bulletSlider(sliderBullet) {
+  console.log(sliderBullet);
+}
+
   const nb_points = slides.length;
   console.log(nb_points);
   let dots = document.querySelector(".dots");
@@ -29,19 +40,22 @@ const slides = [
       dots.appendChild(point);
       point.classList.add("dot");
   }
-  
+
   tableau_point = document.querySelectorAll(".dot");
   tableau_point[0].classList.add("dot_selected");
-  
-  function bulletRight() {
+
+  function bulletSlider () {
       indice = 0; 
    for (let index = 0; index < nb_points; index++) {
-      compteur = tableau_point[index].classList;
-   if (compteur.contains("dot_selected")) {
+      index= tableau_point[index].classList;
+   }}
+   if (index.contains("dot_selected")) {
       indice = index;
-   }
+   };
+   tableau_point[indice].classList.remove("dot_selected");
+   indice++;
+   tableau_point[indice].classList.add("dot_selected");
   
-   tableau_point[indice].classList.remove("dot_selected")
-   tableau_point[indice+1].classList.add("dot_selected")
-  }
-   }
+    if (indice==3) { indice=0; }
+    else { indice++;};
+  
