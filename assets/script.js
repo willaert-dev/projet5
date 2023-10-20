@@ -17,21 +17,15 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
-
- 
+// installation des flèches et ecoute au click à gauche et à droite
 const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 
-  arrow_left.addEventListener("click",function() {
-    bulletSlider(-1);
-  }) ;
-  arrow_right.addEventListener("click",function() {
-    bulletSlider(1);
-  }) ;
-  function bulletSlider(sliderBullet) {
-  console.log(sliderBullet);
-}
+arrow_left.addEventListener("click", bulletSliderRight) ;
+arrow_right.addEventListener("click", bulletSliderLeft) ;
 
+  
+// installation des bullet point
   const nb_points = slides.length;
   console.log(nb_points);
   let dots = document.querySelector(".dots");
@@ -44,18 +38,33 @@ const arrow_right = document.querySelector(".arrow_right");
   tableau_point = document.querySelectorAll(".dot");
   tableau_point[0].classList.add("dot_selected");
 
-  function bulletSlider () {
+  function bulletSliderRight() {
       indice = 0; 
    for (let index = 0; index < nb_points; index++) {
-      index= tableau_point[index].classList;
-   }}
-   if (index.contains("dot_selected")) {
-      indice = index;
-   };
+      compteur= tableau_point[index].classList;
+      if (compteur.contains("dot_selected")) {
+         indice = index;
+      };
+   }
+   console.log(indice);
    tableau_point[indice].classList.remove("dot_selected");
-   indice++;
+   indice = indice +1;
    tableau_point[indice].classList.add("dot_selected");
-  
-    if (indice==3) { indice=0; }
-    else { indice++;};
-  
+   if (indice==3) { indice=0; }
+   else { indice};
+  }
+  function bulletSliderLeft() {
+    indice = 3; 
+ for (let index = 0; index < nb_points; index++) {
+    compteur= tableau_point[index].classList;
+    if (compteur.contains("dot_selected")) {
+       indice = index;
+    };
+ }
+ console.log(indice);
+ tableau_point[indice].classList.remove("dot_selected");
+ indice = indice -1;
+ tableau_point[indice].classList.add("dot_selected");
+ if (indice==3) { indice=0; }
+ else { indice};
+}
