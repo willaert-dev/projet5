@@ -17,15 +17,12 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
-// installation des flèches et ecoute au click à gauche et à droite
 const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 
-arrow_left.addEventListener("click", bulletSliderRight) ;
-arrow_right.addEventListener("click", bulletSliderLeft) ;
+  arrow_left.addEventListener("click", bulletSliderRight) ;
+  arrow_right.addEventListener("click", bulletSliderLeft) ;
 
-  
-// installation des bullet point
   const nb_points = slides.length;
   console.log(nb_points);
   let dots = document.querySelector(".dots");
@@ -54,17 +51,16 @@ arrow_right.addEventListener("click", bulletSliderLeft) ;
    else { indice};
   }
   function bulletSliderLeft() {
-    indice = 3; 
- for (let index = 0; index < nb_points; index++) {
-    compteur= tableau_point[index].classList;
-    if (compteur.contains("dot_selected")) {
-       indice = index;
-    };
- }
- console.log(indice);
- tableau_point[indice].classList.remove("dot_selected");
- indice = indice -1;
- tableau_point[indice].classList.add("dot_selected");
- if (indice==3) { indice=0; }
- else { indice};
-}
+    for (let index = 0; index < nb_points; index++) {
+      compteur= tableau_point[index].classList;
+      if (compteur.contains("dot_selected")) {
+         indice = index;
+      };
+    }
+    console.log(indice);
+    tableau_point[indice].classList.remove("dot_selected");
+    indice = indice -1 ;    
+    tableau_point[indice].classList.add("dot_selected");
+    if (indice==3) { indice=0; }
+    else { indice};
+  }
