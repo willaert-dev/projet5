@@ -20,8 +20,8 @@ const slides = [
 const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 
-  arrow_left.addEventListener("click", bulletSliderRight) ;
-  arrow_right.addEventListener("click", bulletSliderLeft) ;
+  arrow_left.addEventListener("click", bulletSliderLeft) ;
+  arrow_right.addEventListener("click", bulletSliderRight) ;
 
   const nb_points = slides.length;
   console.log(nb_points);
@@ -43,24 +43,25 @@ const arrow_right = document.querySelector(".arrow_right");
          indice = index;
       };
    }
-   console.log(indice);
+   console.log(indice);   
    tableau_point[indice].classList.remove("dot_selected");
-   indice = indice +1;
-   tableau_point[indice].classList.add("dot_selected");
-   if (indice==3) { indice=0; }
+   indice = indice +1;   
+   tableau_point[indice].classList.add("dot_selected");   
+   if (indice==0) { indice=3 ; }
    else { indice};
   }
   function bulletSliderLeft() {
+    indice = 3;
     for (let index = 0; index < nb_points; index++) {
       compteur= tableau_point[index].classList;
-      if (compteur.contains("dot_selected")) {
-         indice = index;
+      if (compteur.contains("dot_selected")) {         
       };
     }
-    console.log(indice);
-    tableau_point[indice].classList.remove("dot_selected");
-    indice = indice -1 ;    
-    tableau_point[indice].classList.add("dot_selected");
+    console.log(indice);      
+    tableau_point[indice].classList.remove("dot_selected");  
+    indice = indice -1 ;
+    tableau_point[indice].classList.add("dot_selected");   
     if (indice==3) { indice=0; }
     else { indice};
   }
+ 
