@@ -20,8 +20,16 @@ const slides = [
 const arrow_left = document.querySelector(".arrow_left");
 const arrow_right = document.querySelector(".arrow_right");
 
-arrow_left.addEventListener("click", bulletSliderLeft);
-arrow_right.addEventListener("click", bulletSliderRight);
+arrow_left.addEventListener("click", function() {
+  bulletSlider(-1)
+});
+arrow_right.addEventListener("click", function() {
+  bulletSlider(1)
+
+});
+function bulletSlider(sliderBullet) {
+  console.log(sliderBullet);
+}
 
 const nb_points = slides.length;
 console.log(nb_points)
@@ -46,7 +54,7 @@ for (let i = 0; i < nb_points; i++) {
 tableau_point = document.querySelectorAll(".dot");
 tableau_point[0].classList.add("dot_selected");
 
-function bulletSliderRight() {
+function bulletSlider(sliderBullet) {
   let indice = 0;
   for (let index = 0; index < nb_points; index++) {
     compteur = tableau_point[index].classList;
@@ -56,26 +64,13 @@ function bulletSliderRight() {
   }
   console.log(indice);  
   tableau_point[indice].classList.remove("dot_selected");
-  if (indice==3) { indice=0; }   else { indice++};
+  if (indice==3) {  
+    indice=0; 
+  } else { indice++};
   tableau_point[indice].classList.add("dot_selected");
 
   bannerImage.src = "./assets/images/slideshow/" + slides[indice].image;
   bannerText.innerHTML = slides[indice].tagLine; 
 }
-
-function bulletSliderLeft() {
-  let indice = 0;
-  for (let index = 0; index < nb_points; index++) {
-    compteur = tableau_point[index].classList;
-    if (compteur.contains("dot_selected")) {
-      indice=index;
-    };
-  }
-  console.log(indice);  
-  tableau_point[indice].classList.remove("dot_selected");
-  if (indice==0) { indice=3; }   else { indice--};
-  tableau_point[indice].classList.add("dot_selected");
-
   bannerImage.src = "./assets/images/slideshow/" + slides[indice].image;
   bannerText.innerHTML = slides[indice].tagLine;
-}
