@@ -29,9 +29,8 @@ arrow_right.addEventListener("click", function() {
   bulletSlider(1)
 
 });
-function bulletSlider(sliderBullet) {
-  console.log(sliderBullet);
-}
+
+
 const bannerImage = document.querySelector(".banner-img");
 bannerImage.src ="./assets/images/slideshow/" + slides[0].image;
 
@@ -64,17 +63,25 @@ function bulletSlider(sliderBullet) {
       indice = index ;
     };
   }
-  console.log(indice);  
+  console.log(indice);
   tableau_point[indice].classList.remove("dot_selected");
-  if (indice==3) {  
+
+if (sliderBullet == 1) {
+  if (indice==3) {
     indice=0; 
   } else { indice++};
+}
+
+if (sliderBullet == (-1)) {
+  if (indice==0) {
+    indice=3; 
+  } else { indice--};
+}
+
   tableau_point[indice].classList.add("dot_selected");
 
 // récupération de la source des images et leur intégrations au slide 
-//  gestion du défilement photos et textes correspondant.   
+//  gestion du défilement photos et textes correspondant.
   bannerImage.src = "./assets/images/slideshow/" + slides[indice].image;
   bannerText.innerHTML = slides[indice].tagLine; 
 }
-  bannerImage.src = "./assets/images/slideshow/" + slides[indice].image;
-  bannerText.innerHTML = slides[indice].tagLine;
